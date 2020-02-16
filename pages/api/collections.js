@@ -1,11 +1,17 @@
-import faunadb, { query as q } from 'faunadb';
+import faunadb, {
+  query as q
+} from 'faunadb';
 
-const { FAUNADB_SECRET: secret } = process.env;
+const {
+  FAUNADB_SECRET: secret
+} = process.env;
 
 let client;
 
 if (secret) {
-  client = new faunadb.Client({ secret });
+  client = new faunadb.Client({
+    secret
+  });
 }
 
 export default async (req, res) => {
@@ -23,8 +29,12 @@ export default async (req, res) => {
         collections = collections.concat(page);
       });
 
-    res.json({ collections });
+    res.json({
+      collections
+    });
   } catch (error) {
-    res.status(500).json({ error });
+    res.status(500).json({
+      error
+    });
   }
 };
